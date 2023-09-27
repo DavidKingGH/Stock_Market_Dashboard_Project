@@ -533,105 +533,105 @@ if __name__ == '__main__':
 # In[ ]:
 
 
-# Moving Average Convergence/Divergence (MACD)
-AAPL_data['MACD'] = ta.EMA(AAPL_data['Close'], timeperiod=12) - ta.EMA(AAPL_data['Close'], timeperiod=26)
-AAPL_data['MACD_Signal_Line'] = ta.EMA(AAPL_data['MACD'], timeperiod=9)
-AAPL_data['MACD_Hist'] = AAPL_data['MACD'] - AAPL_data['MACD_Signal_Line']
+# # Moving Average Convergence/Divergence (MACD)
+# AAPL_data['MACD'] = ta.EMA(AAPL_data['Close'], timeperiod=12) - ta.EMA(AAPL_data['Close'], timeperiod=26)
+# AAPL_data['MACD_Signal_Line'] = ta.EMA(AAPL_data['MACD'], timeperiod=9)
+# AAPL_data['MACD_Hist'] = AAPL_data['MACD'] - AAPL_data['MACD_Signal_Line']
 
 
-# In[ ]:
+# # In[ ]:
 
 
-#AAPL_data.index
-AAPL_data["MACD_Hist"].max()
+# #AAPL_data.index
+# AAPL_data["MACD_Hist"].max()
 
 
-# In[ ]:
+# # In[ ]:
 
 
-## Create subplots
-ax1 = plt.subplot2grid((14,1), (0,0), rowspan = 5, colspan = 1)
-ax2 = plt.subplot2grid((14,1), (5,0), rowspan = 4, colspan = 1, sharex = ax1)
-ax3 = plt.subplot2grid((14,1), (9,0), rowspan = 4, colspan = 1, sharex = ax1)
+# ## Create subplots
+# ax1 = plt.subplot2grid((14,1), (0,0), rowspan = 5, colspan = 1)
+# ax2 = plt.subplot2grid((14,1), (5,0), rowspan = 4, colspan = 1, sharex = ax1)
+# ax3 = plt.subplot2grid((14,1), (9,0), rowspan = 4, colspan = 1, sharex = ax1)
 
-## Price Over Time Graph
-ax1.plot(AAPL_data['Close'], linewidth = 1.5)
-ax1.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
+# ## Price Over Time Graph
+# ax1.plot(AAPL_data['Close'], linewidth = 1.5)
+# ax1.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
 
-## MACD Graph
-ax2.plot(AAPL_data['MACD'], color="grey", linewidth = 1.0, label = 'MACD')
-ax2.plot(AAPL_data['MACD_Signal_Line'], color="skyblue", linewidth = 1.0, label = 'Signal Line')
-ax2.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
+# ## MACD Graph
+# ax2.plot(AAPL_data['MACD'], color="grey", linewidth = 1.0, label = 'MACD')
+# ax2.plot(AAPL_data['MACD_Signal_Line'], color="skyblue", linewidth = 1.0, label = 'Signal Line')
+# ax2.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
 
-for i in range(len(AAPL_data['Close'])):
+# for i in range(len(AAPL_data['Close'])):
     
-    if str(AAPL_data['MACD_Hist'][i])[0] == "-":
-        ax2.bar(AAPL_data.index[i], AAPL_data['MACD_Hist'][i], color="tab:red")
-    else: 
-        ax2.bar(AAPL_data.index[i], AAPL_data['MACD_Hist'][i], color = "tab:green")
+#     if str(AAPL_data['MACD_Hist'][i])[0] == "-":
+#         ax2.bar(AAPL_data.index[i], AAPL_data['MACD_Hist'][i], color="tab:red")
+#     else: 
+#         ax2.bar(AAPL_data.index[i], AAPL_data['MACD_Hist'][i], color = "tab:green")
 
-## Plot RSI subsplot
-ax3.set_title('Relative Strength Indicator (RSI)', fontsize=10)
-ax3.plot(AAPL_data['RSI'], color='tab:gray', linewidth = 1.0)
-plt.axhline(y=70, color='tab:blue', linestyle="dashed", linewidth = 1.0)
-plt.axhline(y=30, color='tab:orange', linestyle="dashed", linewidth = 1.0)
+# ## Plot RSI subsplot
+# ax3.set_title('Relative Strength Indicator (RSI)', fontsize=10)
+# ax3.plot(AAPL_data['RSI'], color='tab:gray', linewidth = 1.0)
+# plt.axhline(y=70, color='tab:blue', linestyle="dashed", linewidth = 1.0)
+# plt.axhline(y=30, color='tab:orange', linestyle="dashed", linewidth = 1.0)
         
-plt.xticks(rotation=45, ha='right')
-plt.show()
+# plt.xticks(rotation=45, ha='right')
+# plt.show()
 
 
-# # Graveyard
+# # # Graveyard
 
-# In[ ]:
-
-
-ticker = ['AAPL']
-stocks = yf.download(ticker, period = "2y")
+# # In[ ]:
 
 
-# In[ ]:
+# ticker = ['AAPL']
+# stocks = yf.download(ticker, period = "2y")
 
 
-stocks
+# # In[ ]:
 
 
-# In[ ]:
+# stocks
 
 
-#Price Over Time Graph
-stocks['Close'].plot(figsize=(15,8), fontsize=13)
-plt.title("AAPL Stock Price Over Time - 2 Year Period")
-plt.ylabel("Price")
-plt.legend(fontsize=13)
-plt.show
+# # In[ ]:
 
 
-# In[ ]:
+# #Price Over Time Graph
+# stocks['Close'].plot(figsize=(15,8), fontsize=13)
+# plt.title("AAPL Stock Price Over Time - 2 Year Period")
+# plt.ylabel("Price")
+# plt.legend(fontsize=13)
+# plt.show
 
 
-# Moving Averages
-APPL_Short_EMA_8 = ta.EMA(stocks['Close'], timeperiod = 8)
-APPL_Short_EMA_20 = ta.EMA(stocks['Close'], timeperiod = 20)
-APPL_Long_EMA_50 = ta.EMA(stocks['Close'], timeperiod = 50)
-APPL_Long_EMA_200 = ta.EMA(stocks['Close'], timeperiod = 200)
+# # In[ ]:
 
 
-# In[ ]:
+# # Moving Averages
+# APPL_Short_EMA_8 = ta.EMA(stocks['Close'], timeperiod = 8)
+# APPL_Short_EMA_20 = ta.EMA(stocks['Close'], timeperiod = 20)
+# APPL_Long_EMA_50 = ta.EMA(stocks['Close'], timeperiod = 50)
+# APPL_Long_EMA_200 = ta.EMA(stocks['Close'], timeperiod = 200)
 
 
-stocks['Short_EMA_8'] = APPL_Short_EMA_8
-stocks['Short_EMA_20'] = APPL_Short_EMA_20
-stocks['Long_EMA_50'] = APPL_Long_EMA_50
-stocks['Long_EMA_200'] = APPL_Long_EMA_200 
-stocks
+# # In[ ]:
 
 
-# In[ ]:
+# stocks['Short_EMA_8'] = APPL_Short_EMA_8
+# stocks['Short_EMA_20'] = APPL_Short_EMA_20
+# stocks['Long_EMA_50'] = APPL_Long_EMA_50
+# stocks['Long_EMA_200'] = APPL_Long_EMA_200 
+# stocks
 
 
-stocks[['Close', 'Short_EMA_8', 'Short_EMA_20']].plot(figsize=(15,8), fontsize=13)
-plt.title("AAPL Stock Price Over Time - 2 Year Period")
-plt.ylabel("Price")
-plt.legend(fontsize=13)
-plt.show
+# # In[ ]:
+
+
+# stocks[['Close', 'Short_EMA_8', 'Short_EMA_20']].plot(figsize=(15,8), fontsize=13)
+# plt.title("AAPL Stock Price Over Time - 2 Year Period")
+# plt.ylabel("Price")
+# plt.legend(fontsize=13)
+# plt.show
 
