@@ -28,7 +28,6 @@ import datetime as dt
 from datetime import date 
 import dateutil
 from dateutil.relativedelta import relativedelta
-apikey = open(r"C:\Users\David_King\Downloads\Stock_Market_Analysis_Tool_Project\NYT_API_KEY.txt", "r")
 nyt = NYTAPI(api_key, parse_dates=True, backoff=True)
 
 
