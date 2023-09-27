@@ -3,6 +3,8 @@
 
 # In[1]:
 
+import os
+api_key = os.environ.get("NYT_API_Key")
 
 import pandas as pd
 import pandas_datareader.data as wb
@@ -27,7 +29,7 @@ from datetime import date
 import dateutil
 from dateutil.relativedelta import relativedelta
 apikey = open(r"C:\Users\David_King\Downloads\Stock_Market_Analysis_Tool_Project\NYT_API_KEY.txt", "r")
-nyt = NYTAPI(apikey.read(), parse_dates=True, backoff=True)
+nyt = NYTAPI(api_key, parse_dates=True, backoff=True)
 
 
 from ratelimit import limits, RateLimitException, sleep_and_retry
