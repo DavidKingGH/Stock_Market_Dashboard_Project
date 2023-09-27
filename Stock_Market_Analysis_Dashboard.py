@@ -8,7 +8,6 @@ import pandas as pd
 import pandas_datareader.data as wb
 import yfinance as yf
 yf.pdr_override()
-import sqlite3
 import talib as ta
 import matplotlib.pyplot as plt
 import seaborn as sns
