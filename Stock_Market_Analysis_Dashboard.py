@@ -148,6 +148,7 @@ def company_to_ticker_index(df):
 
 
 app = Dash(__name__)
+server = app.server
 
 
 # In[8]:
