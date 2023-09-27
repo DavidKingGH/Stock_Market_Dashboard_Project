@@ -1,6 +1,6 @@
 dash==2.13.0
 matplotlib==3.5.3
-numpy==1.24.3
+numpy==1.21.6
 pandas==2.0.3
 plotly==5.9.0
 pynytimes==0.10.0
