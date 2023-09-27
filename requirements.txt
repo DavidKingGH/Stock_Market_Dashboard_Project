@@ -9,9 +9,7 @@ seaborn==0.12.2
 textblob==0.17.1
 yfinance==0.2.18
 gunicorn==21.2.0
-requests==2.20.1
+requests==2.31.0
 pandas-datareader==0.10.0
 talib-binary==0.4.19
 yfinance==0.2.18
-urllib3==2.0.5
-chardet==5.2.0
